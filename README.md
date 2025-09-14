@@ -30,6 +30,3 @@ curl -s -H "Authorization: Bearer $TOKEN" http://localhost:8080/notes
 # Rate limiting (>=11 req en 15s → 429)
 for i in {1..12}; do curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/health; done
 ```
-
-## Variables
-- `JWT_SECRET` ⇒ cambia el valor en `docker-compose.yml` para algo propio.
