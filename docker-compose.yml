@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  api1:
+    build: ./api
+    environment:
+      - INSTANCE=api-1
+      - JWT_SECRET=SecretoMuySeguro
+      - PORT=3000
+    networks: [demo]
+  api2:
+    build: ./api
+    environment:
+      - INSTANCE=api-2
+      - JWT_SECRET=SecretoMuySeguro
+      - PORT=3000
+    networks: [demo]
+
+  nginx:
+    image: nginx:1.27-alpine
+    depends_on:
+      - api1
+      - api2
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks: [demo]
+
+networks:
+  demo: {}

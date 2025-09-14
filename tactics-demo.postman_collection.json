@@ -1,0 +1,126 @@
+{
+  "info": {
+    "name": "tactics-demo",
+    "_postman_id": "b1c3e2b2-0000-4000-8000-000000000001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login (get token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Whoami",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/whoami",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "whoami"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List notes (auth)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/notes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "notes"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create note (auth)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\":\"Hola <> mundo\",\"body\":\"Contenido <script>\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/notes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "notes"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "TOKEN",
+      "value": ""
+    }
+  ]
+}
